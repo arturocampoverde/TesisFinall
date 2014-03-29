@@ -1,0 +1,60 @@
+ <br/>
+     <div align="center">    
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:76px"><b>N</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:40px"><b>O</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:35px"><b>T</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:35px"><b>A</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:35px"><b>S    </b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:76px"><b>A</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:40px"><b>C</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:35px"><b>A</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:35px"><b>D</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:35px"><b>É</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:35px"><b>M</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:35px"><b>I</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:35px"><b>C</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:35px"><b>A</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:35px"><b>S</b></span></font>
+    </div> 
+ 
+ <%@matriculas.each do |f| %>
+  <br/>
+ <center> <%= f.curso.nivel.nivel_numero %> Nivel    "<%= f.curso.cur_paralelo %>"</center>
+ <center>Periodo: <%= f.curso.periodo.period_fech_ini %> -- <%= f.curso.periodo.period_fech_fin %></center>
+ <table bgcolor="#FFEEEE" border="3" align="center">
+
+      <tr>
+      <td align="center" colspan="9" height="10" bgcolor="#DAD6FC"><font color ="#0900FF"><b>NOTAS ACADEMICAS PERTENECIENTES AL ALUMNO</b></font></td>
+      </tr>
+
+    <tr>
+      <td align="center">Materias</td>
+      <td align="center">Deberes</td>
+      <td align="center">Lecciones</td>
+      <td align="center">Trabajos</td>
+      <td align="center">Aportes</td>
+      <td align="center">Examenes</td>
+      <td align="center">Total</td>
+      <td align="center">Promedio</td>
+      <td align="center">Conducta</td>
+    </tr>
+
+    <%f.calificaciones.each do |n| %>
+
+    <tr>
+      <td align="center"><%= n.asignatura.asig_nombre %></td>
+      <td align="center"><%= n.calif_tarea %></td>
+      <td align="center"><%= n.calif_act_indv %></td>
+      <td align="center"><%= n.calif_act_grup %></td>
+      <td align="center"><%= n.calif_leccion %></td>
+      <td align="center"><%= n.calif_examen %></td>
+      <td align="center"><%= n.calif_total %></td>
+      <td align="center"><%= n.calif_promedio %></td>
+      <td align="center"><%= n.calif_conducta %></td>
+    </tr>
+    <%end%>
+
+    </table>
+    <br/>
+
+  <%end%>

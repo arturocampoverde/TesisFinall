@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Chosen: A jQuery Plugin by Harvest to Tame Unwieldy Select Boxes</title>
+  <link rel="stylesheet" href="docsupport/style.css">
+  <link rel="stylesheet" href="docsupport/prism.css">
+  <link rel="stylesheet" href="/chosen_v1.1.0/chosen.css">
+  <style type="text/css" media="all">
+    /* fix rtl for demo */
+    .chosen-rtl .chosen-drop { left: -150px; }
+  </style>
+</head>
+<body>
+  <form>
+
+       <div>
+          <em>Multiple Select</em>
+          <select data-placeholder="Your Favorite Types of Bear" multiple class="chosen-select-width" tabindex="16">
+            <option value=""></option>
+            <option>American Black Bear</option>
+            <option>Asiatic Black Bear</option>
+            <option>Brown Bear</option>
+            <option>Giant Panda</option>
+            <option>Sloth Bear</option>
+            <option>Sun Bear</option>
+            <option>Polar Bear</option>
+            <option>Spectacled Bear</option>
+          </select>
+        </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+  <script src="chosen_v1.1.0/chosen.jquery.js" type="text/javascript"></script>
+  <script src="chosen_v1.1.0/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    var config = {
+      '.chosen-select'           : {},
+      '.chosen-select-deselect'  : {allow_single_deselect:true},
+      '.chosen-select-no-single' : {disable_search_threshold:10},
+      '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+      '.chosen-select-width'     : {width:"65%"}
+    }
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
+  </script>
+  </form>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+<script language="JavaScript" type="text/javascript" src="ajax.js"></script>  
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+    <script>
+      $(document).ready(function() {
+      $('#paralelos').hide();
+      $('#clase_select').change(function() {
+        $.ajax({
+        url: "<%= update_niveles_path%>",
+        data: {
+          clase_id : $('#clase_select').val()
+        },
+        dataType: "script"
+        });
+      });
+      
+      $('#nivel_select').change(function() {
+        $.ajax({
+        url: "<%= update_asignaturas_path%>",
+        data: {
+          nivel_id : $('#nivel_select').val()
+        },
+        dataType: "script"
+        });
+      });
+
+     
+
+        
+    });
+    </script>
+</head>
+
+
+<br/><br/>
+
+    <div align="center">    
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:86px"><b>D</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:66px"><b>I</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:56px"><b>S</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>T</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>R</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>I</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>B</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>U</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>T</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:56px"><b>I</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:66px"><b>V</b></span></font>
+    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:86px"><b>O</b></span></font>
+    </div> 
+
+
+
+<br/>
+  
+  <div align="center"><font color="#3700FF"><h3>PERIODO LECTIVO</h3></font>
+    
+  <%# @periodo.each do |p|%>
+    <table width="416">
+      <tr>
+        <td><font color="#3700FF"><%= "Fecha de Inicio: " %></font><%= @periodo.period_fech_ini %><font color="#3700FF"><%= " Fecha de Fin: " %></font><%= @periodo.period_fech_fin %></td>
+      </tr>
+    </table>
+  <%#end%>
+  </div>
+  <br/>
+  <div id="login-form55">
+
+
+<body>  
+  
+  <%= form_for @distributo , :url => {:action=>"create"} do |d| %>
+  
+   
+<%#*<center><p><h3><b><font color="#3700FF">CREAR MALLAS CURRICULARES</font></b></h3></p></center>%>
+<fieldset style = "width: 400px; height:631px; margin: 1px 50px 65px 270px;">
+  
+  
+    <table>
+      <tr>
+        <td align="center"><font color="#3700FF"><%= d.label  "Escoja Tipo de Malla" %></font></td>
+        <td align="center"><%= collection_select(nil, :clase_id, @clase, :id, :tip_mall_descrip, {:prompt => "Seleccione una Opcion"}, {:id => 'clase_select'}) %></td>
+      </tr>
+
+      <tr>
+        <td align="center"><font color="#3700FF"><%= d.label "Escoja un nivel" %></font></td>
+        <td align="center"><%= collection_select(nil, :nivel_id, @niveles, :id, :nivel_numero, {:prompt => "Seleccione una Opcion"}, {:id => 'nivel_select'}) %></td>
+      </tr>
+
+      <tr>
+        <td align="center"><font color="#3700FF"><%= d.label "Escoja un paralelo" %></font></td>
+        <td align="center">
+          <div id="paralelos" align="center">
+            Hola 
+            <%# @cursos.each do |paralelo| %>
+              <%#=check_box_tag "paralelos[]", paralelo.id%> <%#=paralelo.cur_paralelo%>
+            <%#end%>
+          </div>
+          
+        </td>
+      </tr>
+ 
+        
+
+      <tr>
+        <td align="center"><font color="#3700FF"><%= d.label "Escoja Asignatura" %></font></td>
+        <td align="center"><%= d.collection_select(:asignatura_id, @asignaturas, :id, :asig_nombre, {:prompt => "Seleccione una Opcion"}, {:id => 'asignatura_select'}) %></td>
+      </tr>
+      
+      <tr>        
+      <td align="center"><font color="#3700FF"><%=d.label "Asignar Fecha Distributivo "%></font></td>
+      <td><%=d.text_field :distr_fecha %></td>
+      </tr>      
+    </table>
+
+  
+  
+  
+  <table width="100">  
+      <tr>        
+        <td align="center"><font color="#3700FF"><%=d.label "Horario Distributivo "%></font></td>
+        <td align="center"><%=d.label "A "%> <%= text_field_tag :distr_horarioa %></td>
+        <td align="center"><%=label_tag "B "%> <%= text_field_tag :distr_horariob %></td>
+      </tr>
+  </table>
+  
+  <br>
+
+    <table class="pretty" width="800">
+      <tr>
+        <th><%= sortable "id", "Seleccion" %></th>
+        <th><%= sortable "pers_nombre", "Cedula" %></th>
+        <th><%= sortable "pers_nombre", "Nombre" %></th>
+        <th><%= sortable "pers_apellido", "Apellido" %></th>
+        <th><%= sortable "pers_direccion", "Direccion" %></th>
+        <th><%= sortable "pers_email", "Email" %></th>
+        <th><%= "Materias" %></th>
+      </tr>
+      <% for usuario in @profesores %>
+        <tr>
+          <td align="center"><%= check_box_tag "profesor[]", usuario.id %></td>
+          <td align="center"><%= usuario.pers_cedula %> </td>
+          <td align="center"><%= usuario.pers_nombre %> </td>
+          <td align="center"><%= usuario.pers_apellido %> </td>
+          <td align="center"><%= usuario.pers_direccion %> </td>
+          <td align="center"><%= usuario.pers_email %></td>
+          <td align="center">
+            <div id="<%= "asignaturas_prof_"+"#{usuario.id}"%>">
+              
+            </div>
+          <%#= usuario.pers_email %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <br>
+
+    <center><%=  d.submit "GUARDAR DISTRIBUTIVO" %></center>
+    <%= link_to "Regresar al Menú Principal", asignaturas_menu_principal_admin_path %>
+      </div>
+    </fieldset>
+  <%end%>
+  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  
+  
+  <div id="login-form4">
+    <fieldset style = "width: 80px; height:210px; margin: -636px 50px 65px 665px;">
+   <%= form_tag distributos_new_path, :method => 'get' do %>
+      <%= hidden_field_tag :direction, params[:direction] %>
+      <%= hidden_field_tag :sort, params[:sort] %>
+      <div><p>
+        <center>Filtros por:
+          <p>Nombres<br> Apellidos<br> Cédula</p>
+<%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Búsqueda", :pers_nombre => nil %></center>
+      </p></div>
+    <% end %>
+      </fieldset>
+    </div>
+    </body>
+</html>
+
+
+
+
+
+
+
